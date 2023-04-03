@@ -1,6 +1,8 @@
 # twitter-recommender-sentiment-analysis
 This is a Python project that recommends Twitter users to follow based on their tweets and performs sentiment analysis on their tweets. The project uses the Tweepy library to access the Twitter API and the TextBlob library to perform sentiment analysis.
 
+This project has very small dataset(2000), so prediction will not be that much accurate but you **(viewer)** can contribute to it and make it more accurate.
+
 
 ## Input
 ![Screenshot (135)](https://user-images.githubusercontent.com/96521078/229467042-fa349ee9-a5fa-48ed-b548-2b170177d261.png)
