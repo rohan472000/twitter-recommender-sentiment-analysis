@@ -1,1 +1,9 @@
 tweepy
+pandas 
+numpy
+nltk
+scikit-learn
+re
+flask
+cydifflib
+textblob
