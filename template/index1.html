@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Username Recommendation System</title>
+    <link rel="stylesheet" href="C:\pycharm\codes\pythonProject\dags\hashnode_hackathon\template\style.css">
+    <style>
+        body {
+            background: #0e0e0e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 100px;
+        }
+
+        form {
+            display: inline-block;
+            margin-top: 50px;
+        }
+
+        label {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type=text] {
+            font-size: 1.5rem;
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        input[type=submit] {
+            background: #4CAF50;
+            color: #fff;
+            font-size: 1.5rem;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<!--    <video autoplay loop muted>-->
+<!--        <source src="C:\pycharm\codes\pythonProject\dags\hashnode_hackathon\template\file_example_MP4_480_1_5MG.mp4" type="video/mp4">-->
+<!--    </video>-->
+    <h1>Want to give us user's tweets</h1>
+    <form action="/recommend" method="POST">
+        <label for="username">Enter username to list tweets :</label>
+        <input type="text" id="username1" name="username">
+        <br>
+        <input type="submit" value="Done">
+    </form>
+    <h1>Find Recommended Users</h1>
+    <form action="/recommend" method="POST">
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" name="username">
+        <br>
+        <input type="submit" value="Find Recommendations">
+    </form>
+
+</body>
+</html>

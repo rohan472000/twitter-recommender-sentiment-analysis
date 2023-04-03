@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Username Recommendations</title>
+    <link rel="stylesheet" href="C:\pycharm\codes\pythonProject\dags\hashnode_hackathon\template\style_recommend.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 50px;
+            color: #2c3e50;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px auto;
+            width: 80%;
+            max-width: 800px;
+        }
+        li {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recommendations for {{ username }}</h1>
+    <ul>
+    {% for recommendation in recommendations %}
+        <li>{{ recommendation }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

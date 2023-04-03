@@ -1,0 +1,53 @@
+body {
+  background-image: url('https://cdn.pixabay.com/photo/2018/03/22/23/08/binary-3259707_960_720.jpg');
+  background-size: cover;
+}
+
+.container {
+  margin: auto;
+  padding: 20px;
+  width: 500px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 48px;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+form {
+  display: inline-block;
+  margin-top: 50px;
+}
+
+label {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 24px;
+}
+
+input[type="submit"] {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #555;
+}

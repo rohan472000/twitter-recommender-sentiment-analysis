@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Username Recommendations</title>
+</head>
+<body>
+    <h1>Recommendations for {{ username }}</h1>
+    <ul>
+    {% for recommendation in recommendations %}
+        <li>{{ recommendation }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
