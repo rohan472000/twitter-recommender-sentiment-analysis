@@ -10,6 +10,11 @@ This project has very small dataset(2000), so prediction will not be that much a
 ## Output
 ![Screenshot (136)](https://user-images.githubusercontent.com/96521078/229467079-1c3c4cc1-c043-4d76-98cf-89c5687d9037.png)
 
+## Accuracy and scores
+![Screenshot (137)](https://user-images.githubusercontent.com/96521078/229478501-ee1e3622-7bf1-4189-a678-db8a586c5991.png)
+![Screenshot (138)](https://user-images.githubusercontent.com/96521078/229478551-b6aa9207-ff3c-497d-a93c-251623628bd9.png)
+
+
 ## Usage
 When you run the **python main_app.py** file, the program will prompt you to enter a Twitter username. The program will then retrieve the user's tweets, perform sentiment analysis on the tweets, and recommend other Twitter users to follow based on similar tweets and sentiment analysis.
 
