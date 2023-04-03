@@ -1,0 +1,48 @@
+name: Twitter Sentiment Analysis
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sentiment_analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tweet extraction process
+      env:
+        ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+        ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+        CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+        CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+      run: |
+        python add_tweets_1.py
+        python add_sentiment_to_tweets_2.py
+
+    - name: Run recommendation method
+      run: |
+        python recommender_function_6.py
+
+    - name: Commit and push changes
+      uses: EndBug/add-and-commit@v7
+      with:
+        author_name: rohan472000
+        author_email: anand00rohan@example.com
+        message: Updated sentiment analysis data
+        add: 'updated_reftweets.csv'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
