@@ -4,10 +4,10 @@ import pandas as pd
 # Authenticate with Twitter API
 import os
 
-access_key = ${{ secrets.ACCESS_KEY }}  #os.environ["ACCESS_KEY"]
-access_secret =  ${{ secrets.ACCESS_SECRET }}  #os.environ["ACCESS_SECRET"]
-consumer_key =  ${{ secrets.CONSUMER_KEY }}  #os.environ["CONSUMER_KEY"]
-consumer_secret =  ${{ secrets.CONSUMER_SECRET }}  #os.environ["CONSUMER_SECRET"]
+access_key = os.environ["ACCESS_KEY"]
+access_secret =  os.environ["ACCESS_SECRET"]
+consumer_key = os.environ["CONSUMER_KEY"]
+consumer_secret = os.environ["CONSUMER_SECRET"]
 
 # Twitter authentication
 auth = tweepy.OAuthHandler(access_key, access_secret)
