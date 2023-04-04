@@ -39,11 +39,11 @@ jobs:
       uses: actions/checkout@v3
     - env:
          ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-      if: ${{ secrets.ACCESS_KEY != '' }}
+      if: ${{ env.ACCESS_KEY != '' }}
       run: echo 'This step will only run if ACCESS_KEY has a value set.'
     - env:
          ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-      if: ${{ secrets.ACCESS_KEY == '' }}
+      if: ${{ env.ACCESS_KEY == '' }}
       run: echo 'This step will only run if ACCESS_KEY does not have a value set.'
     - env:
         ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
