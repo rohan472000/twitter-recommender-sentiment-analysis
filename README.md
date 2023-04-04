@@ -32,7 +32,7 @@ Contributions are welcome! Please open an issue or pull request if you have any 
 This project was inspired by the [Tweepy documentation](https://docs.tweepy.org/en/latest/getting_started.html) and the [TextBlob documentation](https://textblob.readthedocs.io/en/dev/). Thanks to the developers of these libraries for their hard work!
 
 ## Contact
-If you have any questions or comments, please feel free to contact me at anand00rohan@example.com.
+If you have any questions or comments, please feel free to contact me at anand00rohan@gmail.com.
 
 
 
