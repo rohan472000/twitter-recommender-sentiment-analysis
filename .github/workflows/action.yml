@@ -7,6 +7,39 @@ on:
     branches: [main]
 
 jobs:
+  job_var:
+    env:
+      ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - if: ${{ env.ACCESS_KEY != '' }}
+      run: echo 'This step will only run if ACCESS_KEY has a value set.'
+    - if: ${{ env.ACCESS_KEY == '' }}
+      run: echo 'This step will only run if ACCESS_KEY does not have a value set.'
+    - shell: python
+      run: "import os ; print(list(os.environ))"
+
+  step_var:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - env:
+         ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+      if: ${{ env.ACCESS_KEY != '' }}
+      run: echo 'This step will only run if ACCESS_KEY has a value set.'
+    - env:
+         ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+      if: ${{ env.ACCESS_KEY != '' }}
+      run: echo 'This step will only run if ACCESS_KEY does not have a value set.'
+    - shell: python
+      run: "import os ; print(list(os.environ))"
+
+  
   sentiment_analysis:
     runs-on: ubuntu-latest
 
@@ -17,7 +50,7 @@ jobs:
     - env:
         ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
       shell: python
-      run: "import os ; assert os.getenv('ACCESS_KEY')"
+      run: "import os ; print(list(os.environ)) ; assert os.getenv('ACCESS_KEY')"
 
     - name: Setup Python environment
       uses: actions/setup-python@v4
