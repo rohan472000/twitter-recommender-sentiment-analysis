@@ -37,6 +37,11 @@ jobs:
         echo "add_sentiment_to_tweets_2.py ran"
 
     - name: Run recommendation method
+      env:
+        ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+        ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+        CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+        CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
       run: |
         python recommender_function_6.py
 
