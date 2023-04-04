@@ -2,8 +2,9 @@ name: Twitter Sentiment Analysis
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   sentiment_analysis:
