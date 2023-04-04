@@ -14,6 +14,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - env:
+        ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+      shell: python
+      run: "import os ; assert os.getenv('ACCESS_KEY')"
+
     - name: Setup Python environment
       uses: actions/setup-python@v4
       with:
