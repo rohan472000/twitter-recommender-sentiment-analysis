@@ -49,7 +49,7 @@ jobs:
       uses: EndBug/add-and-commit@v7
       with:
         author_name: rohan472000
-        author_email: anand00rohan@example.com
+        author_email: anand00rohan@gmail.com
         message: Updated sentiment analysis data
         add: 'updated_reftweets.csv'
       env:
