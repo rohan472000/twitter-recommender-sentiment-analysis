@@ -34,7 +34,7 @@ jobs:
       run: echo 'This step will only run if ACCESS_KEY has a value set.'
     - env:
          ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-      if: ${{ env.ACCESS_KEY != '' }}
+      if: ${{ env.ACCESS_KEY == '' }}
       run: echo 'This step will only run if ACCESS_KEY does not have a value set.'
     - shell: python
       run: "import os ; print(list(os.environ))"
@@ -42,6 +42,11 @@ jobs:
   
   sentiment_analysis:
     runs-on: ubuntu-latest
+    env:
+      ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+      ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+      CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+      CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
 
     steps:
     - name: Checkout repository
@@ -63,11 +68,6 @@ jobs:
         pip install -r requirements.txt
     
     - name: Run tweet extraction process
-      env:
-        ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-        ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
-        CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
-        CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
       run: |
         python add_tweets_1.py
         python add_sentiment_to_tweets_2.py
