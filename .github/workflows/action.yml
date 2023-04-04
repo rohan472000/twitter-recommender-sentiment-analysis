@@ -29,7 +29,10 @@ jobs:
         KEYS = "ACCESS_KEY ACCESS_SECRET CONSUMER_KEY CONSUMER_SECRET".split()
         for key in KEYS:
             print(f"{key} in os.environ: {key in os.environ}")
-            print(f"os.environ[{key}] is truthy: {bool(os.environ[key])}")
+            if os.environ[key]:
+                print("Value is truthy")
+            else:
+                print("Value is not truthy")
 
   step_var:
     runs-on: ubuntu-latest
@@ -57,7 +60,10 @@ jobs:
         KEYS = "ACCESS_KEY ACCESS_SECRET CONSUMER_KEY CONSUMER_SECRET".split()
         for key in KEYS:
             print(f"{key} in os.environ: {key in os.environ}")
-            print(f"os.environ[{key}] is truthy: {bool(os.environ[key])}")
+            if os.environ[key]:
+                print("Value is truthy")
+            else:
+                print("Value is not truthy")
   
   sentiment_analysis:
     runs-on: ubuntu-latest
