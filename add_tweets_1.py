@@ -5,16 +5,16 @@ import pandas as pd
 import os
 
 
-access_key = os.environ['ACCESS_KEY']
-access_secret =  os.environ['ACCESS_SECRET']
-consumer_key = os.environ['CONSUMER_KEY']
-consumer_secret = os.environ['CONSUMER_SECRET']
-# access_key = os.getenv("ACCESS_KEY")
-# access_secret = os.getenv("ACCESS_SECRET")
-# consumer_key = os.getenv("CONSUMER_KEY")
-# consumer_secret = os.getenv("CONSUMER_SECRET")
+# access_key = os.environ['ACCESS_KEY']
+# access_secret =  os.environ['ACCESS_SECRET']
+# consumer_key = os.environ['CONSUMER_KEY']
+# consumer_secret = os.environ['CONSUMER_SECRET']
+access_key = os.getenv("ACCESS_KEY")
+access_secret = os.getenv("ACCESS_SECRET")
+consumer_key = os.getenv("CONSUMER_KEY")
+consumer_secret = os.getenv("CONSUMER_SECRET")
 
-assert all((access_key, access_secret, consumer_key, consumer_secret))
+# assert all((access_key, access_secret, consumer_key, consumer_secret))
 
 # Twitter authentication
 auth = tweepy.OAuthHandler(access_key, access_secret)
