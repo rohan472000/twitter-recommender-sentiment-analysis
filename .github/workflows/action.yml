@@ -14,11 +14,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - env:
-        ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-      shell: python
-      run: "import os ; assert os.getenv('ACCESS_KEY')"
-
     - name: Setup Python environment
       uses: actions/setup-python@v4
       with:
@@ -37,7 +32,9 @@ jobs:
         CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
       run: |
         python add_tweets_1.py
+        echo "add_tweets_1.py ran"
         python add_sentiment_to_tweets_2.py
+        echo "add_sentiment_to_tweets_2.py ran"
 
     - name: Run recommendation method
       run: |
