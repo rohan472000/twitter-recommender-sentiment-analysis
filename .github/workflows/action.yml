@@ -10,6 +10,9 @@ jobs:
   job_var:
     env:
       ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+      ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+      CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+      CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +23,13 @@ jobs:
     - if: ${{ env.ACCESS_KEY == '' }}
       run: echo 'This step will only run if ACCESS_KEY does not have a value set.'
     - shell: python
-      run: "import os ; print(list(os.environ))"
+      run: |
+        import os
+        print(sorted(os.environ))
+        KEYS = "ACCESS_KEY ACCESS_SECRET CONSUMER_KEY CONSUMER_SECRET".split()
+        for key in KEYS:
+            print(f"{key} in os.environ: {key in os.environ}")
+            print(f"os.environ[{key}] is truthy: {bool(os.environ[key])}")
 
   step_var:
     runs-on: ubuntu-latest
@@ -30,15 +39,25 @@ jobs:
       uses: actions/checkout@v3
     - env:
          ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-      if: ${{ env.ACCESS_KEY != '' }}
+      if: ${{ ACCESS_KEY != '' }}
       run: echo 'This step will only run if ACCESS_KEY has a value set.'
     - env:
          ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-      if: ${{ env.ACCESS_KEY == '' }}
+      if: ${{ ACCESS_KEY == '' }}
       run: echo 'This step will only run if ACCESS_KEY does not have a value set.'
-    - shell: python
-      run: "import os ; print(list(os.environ))"
-
+    - env:
+        ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+        ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+        CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+        CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+      shell: python
+      run: |
+        import os
+        print(sorted(os.environ))
+        KEYS = "ACCESS_KEY ACCESS_SECRET CONSUMER_KEY CONSUMER_SECRET".split()
+        for key in KEYS:
+            print(f"{key} in os.environ: {key in os.environ}")
+            print(f"os.environ[{key}] is truthy: {bool(os.environ[key])}")
   
   sentiment_analysis:
     runs-on: ubuntu-latest
