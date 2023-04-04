@@ -70,9 +70,9 @@ clf = SVC(kernel='linear')
 clf.fit(X, y)
 
 # Collect user's tweets
-input_user = input("Enter the username to get recommendations: ")
-user_tweets = get_user_tweets(api, ('@' + input_user))
-# user_tweets = get_user_tweets(api, '@_4_anand_')
+# input_user = input("Enter the username to get recommendations: ")
+# user_tweets = get_user_tweets(api, ('@' + input_user))
+user_tweets = get_user_tweets(api, '@_4_anand_')
 test_tweets = user_tweets
 
 
