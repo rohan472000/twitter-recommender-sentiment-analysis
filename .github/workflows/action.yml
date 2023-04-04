@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+permissions:
+  contents: read
 
 jobs:
   job_var:
@@ -14,10 +16,13 @@ jobs:
       CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
       CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+    - name: Setup Python environment
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
     - if: ${{ env.ACCESS_KEY != '' }}
       run: echo 'This step will only run if ACCESS_KEY has a value set.'
     - if: ${{ env.ACCESS_KEY == '' }}
@@ -40,6 +45,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+    - name: Setup Python environment
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
     - env:
          ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
       if: ${{ env.ACCESS_KEY != '' }}
@@ -77,15 +86,27 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - env:
-        ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
-      shell: python
-      run: "import os ; print(list(os.environ)) ; assert os.getenv('ACCESS_KEY')"
-
     - name: Setup Python environment
       uses: actions/setup-python@v4
       with:
         python-version: 3.8
+
+    - env:
+        ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+        ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+        CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+        CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+      shell: python
+      run: |
+        import os
+        print(sorted(os.environ))
+        KEYS = "ACCESS_KEY ACCESS_SECRET CONSUMER_KEY CONSUMER_SECRET".split()
+        for key in KEYS:
+            print(f"{key} in os.environ: {key in os.environ}")
+            if os.environ[key]:
+                print("Value is truthy")
+            else:
+                print("Value is not truthy")
 
     - name: Install dependencies
       run: |
